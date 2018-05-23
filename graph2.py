@@ -39,7 +39,6 @@ for k in dailyData:
 
 # Graphing: (Stacked) bar graph showing the percent high/in-range/low for each day of the week
 fig = plt.figure()
-width = 0.3
 
 ax2 = fig.add_subplot(111)
 
@@ -54,9 +53,9 @@ for i in range(len(dailyDataPercentValues)):
     inRangeList2.append(dailyDataPercentValues[i][1])
     lowList2.append(dailyDataPercentValues[i][2])
 
-low = ax2.bar(range(len(dailyDataPercent)), lowList2, width, align='center', color='#d60000')
-inRange = ax2.bar(range(len(dailyDataPercent)), inRangeList2, width, align='center', color='#01c61f', bottom=lowList2)
-high = ax2.bar(range(len(dailyDataPercent)), highList2, width, align='center', color='#ffee02', bottom=inRangeList2)
+low = ax2.bar(range(len(dailyDataPercent)), lowList2, align='center', color='#d60000')
+inRange = ax2.bar(range(len(dailyDataPercent)), inRangeList2, align='center', color='#01c61f', bottom=lowList2)
+high = ax2.bar(range(len(dailyDataPercent)), highList2, align='center', color='#ffee02', bottom=inRangeList2)
 
 ax2.set(title="Time in range by weekday", ylabel="Percent", xlabel="Day")
 
