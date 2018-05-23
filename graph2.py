@@ -37,15 +37,12 @@ for k in dailyData:
     for a in range(3):
         dailyDataPercent[k][a] = dailyData[k][a]/totalEntries * 100
 
-# Bar graph showing the percent high/in-range/low for each day of the week
-
-# Graphing
+# Graphing: (Stacked) bar graph showing the percent high/in-range/low for each day of the week
 fig = plt.figure()
 width = 0.3
-N = 7
-ind = np.arange(N)
 
 ax2 = fig.add_subplot(111)
+
 highList2 = []
 inRangeList2 = []
 lowList2 = []
@@ -67,5 +64,9 @@ axes = plt.gca()
 axes.set_ylim([0, 100])
 
 plt.legend((high[0], inRange[0], low[0]), ("High", "In-range", "Low"), bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+
+N = 7
+ind = np.arange(N)
+
 plt.xticks(ind, ('Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'))
 plt.show()
