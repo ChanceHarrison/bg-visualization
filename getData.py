@@ -1,19 +1,24 @@
 # pymongo for DB access, time for determining the current time
 import pymongo
-from datetime import time, timedelta, datetime
+from datetime import timedelta, datetime
 
 def determineTimeInterval():
     # Prompt the user to enter the number of weeks that they want to view data for
     userInput = int(input("Please enter the number of weeks that you would like to retrieve data for: "))
 
+    # Retrieve the current date/time
     currentTime = datetime.now()
 
+    # Find the start of the week (approximately) to be the difference between the current time and the time elapsed in
+    # the current week
     startOfWeek = currentTime - timedelta(days=currentTime.weekday())
 
+    # Convert currentTIme and startOfWeek to milliseconds...
     currentTimeMs = int(round(currentTime.timestamp() * 1000))
-
     startOfWeekMs = int(round(startOfWeek.timestamp() * 1000))
 
+    # ...which facilitates the math to find a final date in ms since epoch to collect data after with clean separation
+    # of individual weeks
     gatherDataSince = currentTimeMs - (userInput * 604800000) + (currentTimeMs - startOfWeekMs)
 
     return gatherDataSince
